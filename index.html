@@ -1,379 +1,732 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medishetty Manikanta Gandhi - Full Stack Developer</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="description" content="Portfolio of Medishetty Manikanta Gandhi - Full Stack Developer specializing in Python, JavaScript, Django, and Flask">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
-</head>
-<body data-color-scheme="dark">
-    <!-- Navigation -->
-    <nav class="nav-header">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <h2>MG</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#community" class="nav-link">Community</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
-    </nav>
+<html lang="en" class="scroll-smooth">
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu hidden">
-        <ul class="mobile-nav-menu">
-            <li><a href="#home" class="mobile-nav-link">Home</a></li>
-            <li><a href="#about" class="mobile-nav-link">About</a></li>
-            <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
-            <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
-            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
-            <li><a href="#community" class="mobile-nav-link">Community</a></li>
-            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
-        </ul>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mucharla Sreelekha — Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind config (optional custom colors)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+                            400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+                            800: '#3730a3', 900: '#312e81'
+                        },
+                        accent: {
+                            50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9',
+                            400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490',
+                            800: '#155e75', 900: '#164e63'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple keyframe for subtle float-in */
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-floatIn {
+            animation: floatIn .6s ease-out both;
+        }
+
+        /* Scroll-to-top button fade */
+        .fade-in {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/60 dark:border-slate-800 shadow-lg transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand -->
+                <a href="#home" class="font-bold text-lg tracking-tight text-primary-700 dark:text-primary-300 hover:scale-105 transition-transform">MKGandhi Medishetty</a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8 text-base font-semibold">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#community" class="nav-link">Community</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="Medishetty Manikanta Gandhi Resume.pdf" download class="nav-link">Resume</a>
+                </nav>
+
+                <!-- Hamburger Button -->
+                <button id="hamburgerBtn" class="fixed top-4 right-4 z-[200] flex flex-col justify-between w-8 h-8 focus:outline-none md:hidden">
+                    <span class="bar bar1 block h-1 w-full bg-white rounded"></span>
+                    <span class="bar bar2 block h-1 w-full bg-white rounded"></span>
+                    <span class="bar bar3 block h-1 w-full bg-white rounded"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
+            <div class="menu-container bg-gradient-to-br from-primary-600 via-accent-600 to-primary-900 dark:from-slate-900 dark:via-primary-900 dark:to-slate-900 rounded-2xl shadow-2xl px-6 py-8 w-[90vw] max-w-sm flex flex-col items-center gap-4">
+                <nav class="flex flex-col items-center w-full gap-4">
+                    <a href="#about" class="nav-link-mobile w-full text-center py-2 px-2 hover:text-accent-200 transition-all duration-500">About</a>
+                    <a href="#skills" class="nav-link-mobile w-full text-center py-2 px-2 hover:text-accent-200 transition-all duration-500">Skills</a>
+                    <a href="#experience" class="nav-link-mobile w-full text-center py-2 px-2 hover:text-accent-200 transition-all duration-500">Experience</a>
+                    <a href="#projects" class="nav-link-mobile w-full text-center py-2 px-2 hover:text-accent-200 transition-all duration-500">Projects</a>
+                    <a href="#community" class="nav-link-mobile w-full text-center py-2 px-2 hover:text-accent-200 transition-all duration-500">Community</a>
+                    <a href="#contact" class="nav-link-mobile w-full text-center py-2 px-2 hover:text-accent-200 transition-all duration-500">Contact</a>
+                    <a href="../Media/Mucharla_Sreelekha_Resume.pdf" download class="nav-link-mobile w-full text-center py-2 px-2 hover:text-accent-200 transition-all duration-500">Resume</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Styles & Animation -->
+        <style>
+            .bar { transition: all 0.4s ease; }
+            .bar1.open { transform: rotate(45deg) translate(5px, 5px); }
+            .bar2.open { opacity: 0; }
+            .bar3.open { transform: rotate(-45deg) translate(5px, -5px); }
+            .nav-link-mobile { opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
+            .menu-open .nav-link-mobile { opacity: 1; transform: translateY(0); }
+        </style>
+
+        <!-- JS Logic -->
+        <script>
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuContainer = mobileMenu.querySelector('.menu-container');
+            const links = document.querySelectorAll('.nav-link-mobile');
+
+            hamburgerBtn.addEventListener('click', () => {
+              // Toggle hamburger animation
+                hamburgerBtn.querySelector('.bar1').classList.toggle('open');
+                hamburgerBtn.querySelector('.bar2').classList.toggle('open');
+                hamburgerBtn.querySelector('.bar3').classList.toggle('open');
+            
+              // Toggle menu overlay
+                mobileMenu.classList.toggle('opacity-100');
+                mobileMenu.classList.toggle('pointer-events-auto');
+                mobileMenu.classList.toggle('menu-open');
+                document.body.style.overflow = mobileMenu.classList.contains('opacity-100') ? 'hidden' : '';
+            });
+
+            // Close when link clicked
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburgerBtn.querySelector('.bar1').classList.remove('open');
+                        hamburgerBtn.querySelector('.bar2').classList.remove('open');
+                        hamburgerBtn.querySelector('.bar3').classList.remove('open');
+                        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'menu-open');
+                        document.body.style.overflow = '';
+            });
+        });
+
+// Close when click outside
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) {
+    hamburgerBtn.querySelector('.bar1').classList.remove('open');
+    hamburgerBtn.querySelector('.bar2').classList.remove('open');
+    hamburgerBtn.querySelector('.bar3').classList.remove('open');
+    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'menu-open');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+    </header>
+    <style>
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 0;
+            bottom: 0;
+            background: currentColor;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        @media (max-width: 767px) {
+            #mobile-menu {
+                display: flex;
+            }
+        }
+    </style>
+
+    <!-- Hero -->
+    <section id="home" class="relative overflow-hidden">
+        <!-- Decorative background shapes -->
+        <div
+            class="absolute -top-32 -left-32 w-96 h-96 bg-primary-100 dark:bg-primary-900 rounded-full blur-3xl opacity-40 z-0">
+        </div>
+        <div
+            class="absolute -bottom-32 -right-32 w-96 h-96 bg-accent-100 dark:bg-accent-900 rounded-full blur-3xl opacity-40 z-0">
+        </div>
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center px-2">
+                <div class="animate-floatIn">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">Building
+                        smarter solutions
+                        with <span class="text-primary-600 dark:text-primary-400">Python</span>, <span
+                            class="text-primary-600 dark:text-primary-400">Django</span> & <span
+                            class="text-primary-600 dark:text-primary-400">Azure</span>.</h1>
+                    <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl transition-colors duration-300">
+                        Full‑stack developer passionate about
+                        shipping clean, useful web apps. Community organizer at Microsoft AI Innovators Hub & Cyber
+                        Club.</p>
+                    <div class="mt-6 flex flex-wrap items-center gap-3">
+                        <a href="#projects"
+                            class="inline-flex items-center justify-center rounded-xl bg-primary-600 text-white px-4 py-2.5 text-sm font-semibold shadow-lg hover:bg-primary-700 hover:scale-105 active:scale-95 transition-all duration-200">View
+                            Projects</a>
+                        <a href="#contact"
+                            class="inline-flex items-center justify-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2.5 text-sm font-semibold shadow hover:border-primary-500 hover:scale-105 active:scale-95 transition-all duration-200">Hire
+                            Me</a>
+                        <a href="https://www.linkedin.com/in/medishetty-manikanta-gandhi" target="_blank"
+                            class="inline-flex items-center justify-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2.5 text-sm font-semibold shadow hover:border-primary-500 hover:scale-105 active:scale-95 transition-all duration-200">LinkedIn</a>
+                        <a href="https://github.com/MKGandhi05" target="_blank"
+                            class="inline-flex items-center justify-center rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2.5 text-sm font-semibold shadow hover:border-primary-500 hover:scale-105 active:scale-95 transition-all duration-200">GitHub</a>
+                    </div>
+                </div>
+                <div class="md:justify-self-end animate-floatIn md:delay-150">
+                    <!-- Profile image only -->
+                    <img src="MKGandhi.jpg" alt="Manikanta Gandhi Photo"
+                        class="rounded-3xl shadow-2xl w-[100%] max-w-lg h-[20rem] sm:h-[25rem] object-cover mx-auto md:ml-[-20px]" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-16">
+        <!-- Section Divider -->
+        <div class="flex items-center justify-center py-2">
+            <div class="w-2 h-2 rounded-full bg-primary-400 dark:bg-primary-600 animate-pulse"></div>
+            <div
+                class="mx-2 h-0.5 w-32 bg-gradient-to-r from-primary-300 via-accent-200 to-primary-300 dark:from-primary-700 dark:via-accent-900 dark:to-primary-700">
+            </div>
+            <div class="w-2 h-2 rounded-full bg-accent-400 dark:bg-accent-600 animate-pulse"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center text-center">
+                <h2
+                    class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-accent-500 to-primary-700 mb-4 drop-shadow-lg">
+                    About Me</h2>
+                <blockquote
+                    class="text-xl italic text-accent-200 dark:text-accent-300 bg-white/10 dark:bg-slate-900/30 rounded-xl px-6 py-4 mb-6 shadow-lg backdrop-blur border-l-4 border-primary-400">
+                    “Turning ideas into shipped products and empowering communities.”</blockquote>
+                <p class="mb-10 text-lg text-slate-300 dark:text-slate-200 max-w-2xl">I’m a full‑stack developer who
+                    loves working across the stack with <span class="font-semibold text-primary-400">Python</span>,
+                    <span class="font-semibold text-primary-400">Django</span>, <span
+                        class="font-semibold text-primary-400">React</span>, and <span
+                        class="font-semibold text-primary-400">Azure</span>. Active in the Hyderabad AI community, I
+                    thrive on collaboration and continuous learning.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-2 px-2">
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-6 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-primary-200 text-lg flex items-center gap-2 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-300" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 21h4a2 2 0 002-2V7a2 2 0 00-2-2H8a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        What I’m great at
+                    </h3>
+                    <ul class="mt-3 space-y-2 text-base text-slate-200 list-disc list-inside">
+                        <li>Designing and building secure, scalable web apps</li>
+                        <li>Collaborating via Git/GitHub and clean PRs</li>
+                        <li>Deploying to Azure with CI/CD basics</li>
+                    </ul>
+                </div>
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-6 shadow-2xl border border-accent-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-accent-200 text-lg flex items-center gap-2 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-300" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 21h4a2 2 0 002-2V7a2 2 0 00-2-2H8a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Currently exploring
+                    </h3>
+                    <ul class="mt-3 space-y-2 text-base text-slate-200 list-disc list-inside">
+                        <li>AI‑assisted dev tooling & RAG patterns</li>
+                        <li>Design systems with Tailwind + Radix</li>
+                        <li>Better DX with Docker & FastAPI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-16 bg-slate-50 dark:bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full flex flex-col items-center">
+                <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-accent-500 to-primary-700 mb-4 drop-shadow-lg text-center">Skills</h2>
+                <p class="text-lg text-slate-300 dark:text-slate-200 text-center">My Technical and Professional Skill Set.</p>
+            </div>
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+                <!-- Programming Languages -->
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-6 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-primary-200 text-lg mb-2 flex items-center gap-2">
+                        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-accent-300' fill='none'
+                            viewBox='0 0 24 24' stroke='currentColor'>
+                            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                                d='M16 7a4 4 0 01-8 0' />
+                        </svg>
+                        Programming Languages
+                    </h3>
+                    <p class="text-base text-slate-200">Java, Python, JavaScript</p>
+                </div>
+                <!-- Web -->
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-6 shadow-2xl border border-accent-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-accent-200 text-lg mb-2 flex items-center gap-2">
+                        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-primary-300' fill='none'
+                            viewBox='0 0 24 24' stroke='currentColor'>
+                            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                                d='M4 6h16M4 10h16M4 14h16M4 18h16' />
+                        </svg>
+                        Web
+                    </h3>
+                    <p class="text-base text-slate-200">HTML, CSS, Tailwind, Django, Flask, REST APIs, Spring (basic)
+                    </p>
+                </div>
+                <!-- Database -->
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-6 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-primary-200 text-lg mb-2 flex items-center gap-2">
+                        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-accent-300' fill='none'
+                            viewBox='0 0 24 24' stroke='currentColor'>
+                            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                                d='M4 6h16M4 10h16M4 14h16' />
+                        </svg>
+                        Database
+                    </h3>
+                    <p class="text-base text-slate-200">SQL, MySQL, MongoDB</p>
+                </div>
+                <!-- Web Services -->
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-6 shadow-2xl border border-accent-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-accent-200 text-lg mb-2 flex items-center gap-2">
+                        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-primary-300' fill='none'
+                            viewBox='0 0 24 24' stroke='currentColor'>
+                            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                                d='M8 21h4a2 2 0 002-2V7a2 2 0 00-2-2H8a2 2 0 00-2 2v12a2 2 0 002 2z' />
+                        </svg>
+                        Web Services
+                    </h3>
+                    <p class="text-base text-slate-200">RESTful APIs (hands-on), SOAP (basic understanding)</p>
+                </div>
+                <!-- Cloud/Tools -->
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-6 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-primary-200 text-lg mb-2 flex items-center gap-2">
+                        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-accent-300' fill='none'
+                            viewBox='0 0 24 24' stroke='currentColor'>
+                            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                                d='M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z' />
+                        </svg>
+                        Cloud / Tools
+                    </h3>
+                    <p class="text-base text-slate-200">Azure, AWS, Git, GitHub, VS Code, Power BI, Copilot Studio</p>
+                </div>
+                <!-- Core CS -->
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-6 shadow-2xl border border-accent-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-accent-200 text-lg mb-2 flex items-center gap-2">
+                        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-primary-300' fill='none'
+                            viewBox='0 0 24 24' stroke='currentColor'>
+                            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                                d='M16 7a4 4 0 01-8 0' />
+                        </svg>
+                        Core CS
+                    </h3>
+                    <p class="text-base text-slate-200">Data Structures & Algorithms, Operating Systems, DBMS</p>
+                </div>
+                <!-- Soft Skills -->
+                <div
+                    class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-6 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-primary-200 text-lg mb-2 flex items-center gap-2">
+                        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-accent-300' fill='none'
+                            viewBox='0 0 24 24' stroke='currentColor'>
+                            <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                                d='M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z' />
+                        </svg>
+                        Soft Skills
+                    </h3>
+                    <p class="text-base text-slate-200">Communication, Leadership, Problem-Solving</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full flex flex-col items-center">
+                <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-accent-500 to-primary-700 mb-4 drop-shadow-lg text-center">Experience</h2>
+                <p class="text-lg text-slate-300 dark:text-slate-200 text-center">Roles, internships, and leadership that shaped my journey.</p>
+            </div>
+            <div class="mt-10 relative">
+                <div
+                    class="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-400 via-accent-400 to-primary-700 rounded-full">
+                </div>
+                <ol class="space-y-12">
+                    <!-- Experience Card 1 -->
+                    <li class="relative pl-20">
+                        <span
+                            class="absolute left-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-accent-500 text-white text-lg font-bold shadow-lg">1</span>
+                        <div
+                            class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-8 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                            <div class="flex flex-wrap items-center gap-x-3 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-300" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 7a4 4 0 01-8 0" />
+                                </svg>
+                                <h3 class="font-bold text-primary-200 text-xl">Full‑Stack Developer Intern — Rinav Tech
+                                </h3>
+                                <span class="text-xs text-slate-300 ml-auto">Apr 2025 – Jul 2025 · Hyderabad</span>
+                            </div>
+                            <ul class="mt-3 list-disc list-inside text-base text-slate-200 space-y-1">
+                                <li>Automated studio onboarding & media uploads (web‑based workflow).</li>
+                                <li>Built components for registration, login, media management, admin approvals.</li>
+                                <li>Stack: Django, HTML/CSS, JavaScript, MySQL.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Experience Card 2 -->
+                    <li class="relative pl-20">
+                        <span
+                            class="absolute left-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-accent-500 text-white text-lg font-bold shadow-lg">2</span>
+                        <div
+                            class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-8 shadow-2xl border border-accent-500/30 backdrop-blur-lg">
+                            <div class="flex flex-wrap items-center gap-x-3 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-300" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                </svg>
+                                <h3 class="font-bold text-accent-200 text-xl">IT Intern Team Lead— Mentoria Institute Limited
+                                </h3>
+                                <span class="text-xs text-slate-300 ml-auto">Jan 2025 – Apr 2025 · Hyderabad</span>
+                            </div>
+                            <ul class="mt-3 list-disc list-inside text-base text-slate-200 space-y-1">
+                                <li>Built website modules; improved user access efficiency by ~30%.</li>
+                                <li>Implemented secure authentication and smooth UX.</li>
+                                <li>Collaborative delivery within project timelines.</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+<section id="projects" class="py-16 bg-slate-50 dark:bg-slate-900/40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-baseline justify-between gap-4 flex-wrap">
+      <div class="w-full flex flex-col items-center">
+        <h2
+          class="text-4xl leading-[1.3] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-accent-500 to-primary-700 mb-2 drop-shadow-lg text-center">
+          Projects
+        </h2>
+        <p class="text-lg text-slate-300 dark:text-slate-200 text-center">
+          My featured work and open-source contributions.
+        </p>
+      </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="hero-greeting">Hi, I'm</span>
-                        <span class="hero-name">Medishetty Manikanta Gandhi</span>
-                    </h1>
-                    <p class="hero-tagline">Full Stack Developer & Problem Solver</p>
-                    <p class="hero-description">
-                        Passionate Computer Science student specializing in Python, JavaScript, Django, and Flask. 
-                        I create scalable web applications and REST APIs with expertise in cloud deployment and modern development practices.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn btn--primary scroll-link">View Projects</a>
-                        <a href="#contact" class="btn btn--outline scroll-link">Contact Me</a>
-                        <a href="https://linkedin.com/in/Medishetty-manikanta-gandhi" target="_blank" class="btn btn--secondary">LinkedIn</a>
-                        <a href="https://github.com/MKGandhi05" target="_blank" class="btn btn--secondary">GitHub</a>
-                    </div>
+    <!-- Project Cards -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 px-2">
+      <!-- Project Card: PromptProbe -->
+      <article
+        class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800">
+        <div
+          class="w-full h-64 flex items-center justify-center bg-gray-900 rounded-2xl shadow-xl">
+          <img src="pp.png" alt="PromptProbe Logo"
+            class="w-[100%] h-[100%] object-contain" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold">
+            <a href="https://promptprobe.in" target="_blank"
+              class="hover:underline">PromptProbe — Multi-LLM Playground</a>
+          </h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Multi-LLM playground with authentication, REST APIs, and session
+            tracking. 250+ users in week one, 15+ paid subscribers.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3">
+
+            <span
+              class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs">React
+              + Tailwind</span>
+            <span
+              class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs">Django</span>
+            <span
+              class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs">MySQL</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project Card: CodeMania -->
+      <article
+        class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800">
+        <div
+          class="w-full h-64 flex items-center justify-center bg-gray-900 rounded-2xl shadow-xl">
+          <img src="CodeMania.png" alt="CodeMania Logo"
+            class="w-[120%] h-[120%] object-contain" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold">CodeMania — Hackathon Platform</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Hackathon management platform for 150+ participants. Reduced admin
+            workload by 75% with automated event workflows.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="https://github.com/MKGandhi05/CodeMania" target="_blank"
+              class="inline-flex items-center rounded-xl border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm font-semibold bg-gradient-to-r from-primary-500 via-accent-500 to-primary-700 text-white shadow-lg hover:scale-105 hover:border-primary-500 transition">GitHub</a>
+            <span
+              class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs">React
+              + Tailwind</span>
+            <span
+              class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs">Flask</span>
+            <span
+              class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs">MySQL</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project Card: PowerPitch -->
+      <article
+        class="rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800">
+        <div
+          class="w-full h-64 flex items-center justify-center bg-gray-900 rounded-2xl shadow-xl">
+          <img src="powerpitch.png" alt="PowerPitch Logo"
+            class="w-[100%] h-[100%] object-contain" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-semibold">PowerPitch — Event Tracking System</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Event tracking system for 90+ weekly users. Decreased paperwork by
+            80% with MySQL-backed automation.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="https://github.com/MKGandhi05/PowerPitch" target="_blank"
+              class="inline-flex items-center rounded-xl border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm font-semibold bg-gradient-to-r from-primary-500 via-accent-500 to-primary-700 text-white shadow-lg hover:scale-105 hover:border-primary-500 transition">GitHub</a>
+            <span
+              class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs">Flutter
+              + Firebase</span>
+            <span
+              class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-800 px-2.5 py-1 text-xs">MySQL</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+    <!-- Community & Leadership -->
+    <section id="community" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full flex flex-col items-center">
+                <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-accent-500 to-primary-700 mb-4 drop-shadow-lg text-center">Community & Leadership</h2>
+                <p class="text-lg text-slate-300 dark:text-slate-200 text-center">Organizing, volunteering, and leading impactful tech events.</p>
+            </div>
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+                <div class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-6 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-primary-200 text-lg flex items-center gap-2 mb-2">
+                        Microsoft AI Innovators Hub — Co-Organizer
+                    </h3>
+                    <p class="mt-2 text-base text-slate-200">Organized and led learning sessions; contributed to community‑driven AI initiatives.</p>
                 </div>
-                <div class="hero-image">
-                    <div class="profile-placeholder">
-                        <div class="profile-icon">👨‍💻</div>
-                    </div>
+                <div class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-6 shadow-2xl border border-accent-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-accent-200 text-lg flex items-center gap-2 mb-2">
+                        Global AI Hyderabad — Co-Organizer
+                    </h3>
+                    <p class="mt-2 text-base text-slate-200">Assisted in meetups & knowledge‑sharing for the Hyderabad AI community.</p>
+                </div>
+                <div class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-6 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-primary-200 text-lg flex items-center gap-2 mb-2">
+                        CodeMania 2K25 — Organizer
+                    </h3>
+                    <p class="mt-2 text-base text-slate-200">End‑to‑end planning & execution of a 6‑hour hackathon; boosted collaboration & creativity.</p>
+                </div>
+                <div class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-6 shadow-2xl border border-accent-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-accent-200 text-lg flex items-center gap-2 mb-2">
+                        PowerPitch — Organizer
+                    </h3>
+                    <p class="mt-2 text-base text-slate-200">Ran weekly GDs, JAMs, & mock interviews; led industry outreach for top performers.</p>
+                </div>
+                <div class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-6 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-primary-200 text-lg flex items-center gap-2 mb-2">
+                        Cyber Club, SICET — Coordinator
+                    </h3>
+                    <p class="mt-2 text-base text-slate-200">Taught sessions & raised cybersecurity awareness across campus.</p>
+                </div>
+                <div class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-6 shadow-2xl border border-accent-500/30 backdrop-blur-lg">
+                    <h3 class="font-bold text-accent-200 text-lg flex items-center gap-2 mb-2">
+                        MAIH × Cyber Club — President
+                    </h3>
+                    <p class="mt-2 text-base text-slate-200">Organized collaborative AI & cybersecurity events and workshops.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <div class="about-content">
-                    <p class="about-summary">
-                        Final-year Computer Science student (graduating 2026) with experience in Python, JavaScript, Django, and Flask. 
-                        Skilled in REST APIs, SQL, and cloud (Azure), with strong foundation in algorithms and scalable application design.
-                    </p>
-                    <div class="about-education">
-                        <h3>Education</h3>
-                        <div class="education-item">
-                            <h4>Bachelor of Technology in Computer Science</h4>
-                            <p>Sri Indu College of Engineering and Technology</p>
-                            <span class="education-period">Nov 2022 – May 2026</span>
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-slate-50 dark:bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full flex flex-col items-center mb-10">
+                <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-500 via-accent-500 to-primary-700 mb-4 drop-shadow-lg text-center">Contact</h2>
+                <p class="text-lg text-slate-300 dark:text-slate-200 text-center">Whether you have an opportunity in mind or just want to say hi, I’d love to connect.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start px-2">
+                <div class="rounded-3xl bg-gradient-to-br from-primary-900/60 via-primary-700/40 to-accent-900/60 p-8 shadow-2xl border border-primary-500/30 backdrop-blur-lg">
+                    <div class="space-y-5 text-base">
+                        <div class="flex items-center gap-3">
+                            <!-- Mail logo -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <span class="font-semibold text-primary-200">Email:</span>
+                            <a class="text-accent-300 hover:underline" href="mailto:sreelekhaoff@gmail.com">mkgandhioff@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <!-- LinkedIn logo -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.156 1.459-2.156 2.968v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.601 2.002 3.601 4.604v5.592z"/></svg>
+                            <span class="font-semibold text-accent-200">LinkedIn:</span>
+                            <a class="text-primary-300 hover:underline" target="_blank" href="https://www.linkedin.com/in/medishetty-manikanta-gandhi">Medishetty Manikanta Gandhi</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                            <span class="font-semibold text-primary-200">Location:</span>
+                            <span class="text-slate-200">Hyderabad, India</span>
                         </div>
                     </div>
                 </div>
-                <div class="about-highlights">
-                    <div class="highlight-card">
-                        <h3>What I'm great at</h3>
-                        <ul>
-                            <li>Building scalable web applications</li>
-                            <li>Designing REST API architectures</li>
-                            <li>Cloud deployment and automation</li>
-                            <li>Full-stack development</li>
-                            <li>Database optimization</li>
-                        </ul>
+                <form class="rounded-3xl bg-gradient-to-br from-accent-900/60 via-accent-700/40 to-primary-900/60 p-8 shadow-2xl border border-accent-500/30 backdrop-blur-lg" action="https://formspree.io/f/mkgvdbgq" method="POST">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <label class="block text-sm">
+                            <span class="text-slate-300 dark:text-slate-200 font-semibold">Name</span>
+                            <input required name="name" type="text" class="mt-1 w-full rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 px-3 py-2 focus:ring-2 focus:ring-primary-500" placeholder="Your name" />
+                        </label>
+                        <label class="block text-sm">
+                            <span class="text-slate-300 dark:text-slate-200 font-semibold">Email</span>
+                            <input required name="email" type="email" class="mt-1 w-full rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 px-3 py-2 focus:ring-2 focus:ring-primary-500" placeholder="you@example.com" />
+                        </label>
                     </div>
-                    <div class="highlight-card">
-                        <h3>Currently exploring</h3>
-                        <ul>
-                            <li>Machine Learning & AI</li>
-                            <li>Microservices architecture</li>
-                            <li>DevOps practices</li>
-                            <li>Modern React patterns</li>
-                            <li>Cloud-native development</li>
-                        </ul>
-                    </div>
-                </div>
+                    <label class="block text-sm mt-4">
+                        <span class="text-slate-300 dark:text-slate-200 font-semibold">Message</span>
+                        <textarea required name="message" rows="5" class="mt-1 w-full rounded-xl border-slate-300 dark:border-slate-700 dark:bg-slate-900 px-3 py-2 focus:ring-2 focus:ring-primary-500" placeholder="Tell me about the role or project..."></textarea>
+                    </label>
+                    <button type="submit" class="mt-6 w-full inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 text-white px-6 py-3 text-base font-semibold shadow-lg hover:scale-105 transition-transform">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">JavaScript</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web Technologies</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">REST APIs</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">MongoDB</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Cloud & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Azure</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Copilot Studio</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Core Computer Science</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Data Structures & Algorithms</span>
-                        <span class="skill-tag">Operating Systems</span>
-                        <span class="skill-tag">DBMS</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Communication</span>
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Leadership</span>
-                    </div>
-                </div>
+    <!-- Footer -->
+    <footer class="py-10 bg-gradient-to-r from-primary-900/80 via-accent-900/60 to-primary-700/80 backdrop-blur-lg border-t border-primary-700/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="font-semibold text-primary-300">© <span id="year"></span> Mucharla Sreelekha</span>
+                <span class="hidden sm:inline">|</span>
+                <span class="text-slate-400">All rights reserved.</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-number">1</div>
-                    <div class="timeline-content">
-                        <h3>Full Stack Developer Intern</h3>
-                        <p class="company">Rinav Tech • Hyderabad, India</p>
-                        <p class="period">Apr 2025 – July 2025</p>
-                        <ul class="achievements">
-                            <li>Automated onboarding and media uploads with Django + MySQL workflow, reducing manual effort by ~60%</li>
-                            <li>Designed scalable enterprise-style app with REST API endpoints supporting 1,000+ concurrent users with <200ms response time</li>
-                            <li>Built reusable modules for login, registration, media management, reducing code duplication by 40%</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-number">2</div>
-                    <div class="timeline-content">
-                        <h3>IT Lead Intern</h3>
-                        <p class="company">Mentoria Institute Limited • Hyderabad, India</p>
-                        <p class="period">Jan 2025 – Apr 2025</p>
-                        <ul class="achievements">
-                            <li>Delivered centralized website (Flask + React + MySQL), improving efficiency by ~40%</li>
-                            <li>Integrated 5+ third-party APIs and deployed on cloud for real-time operations</li>
-                            <li>Led 3-member agile team, implementing CI/CD pipelines, reducing deployment time by 50%</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>PromptProbe</h3>
-                        <div class="project-links">
-                            <a href="https://promptprobe.in" target="_blank" class="project-link">Live Demo</a>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Multi-LLM playground with authentication, REST APIs, and session tracking. A comprehensive platform for testing and comparing different language models.
-                    </p>
-                    <div class="project-metrics">
-                        <span class="metric">250+ users in week one</span>
-                        <span class="metric">15+ paid subscribers</span>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">REST APIs</span>
-                        <span class="tech-tag">Authentication</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>CodeMania</h3>
-                    </div>
-                    <p class="project-description">
-                        Hackathon platform for participants with automated event workflows. Streamlines event management and participant registration processes.
-                    </p>
-                    <div class="project-metrics">
-                        <span class="metric">150+ participants</span>
-                        <span class="metric">75% admin workload reduction</span>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Event Management</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>PowerPitch</h3>
-                    </div>
-                    <p class="project-description">
-                        Event tracking system with MySQL-backed automation. Comprehensive solution for managing and tracking various events with automated workflows.
-                    </p>
-                    <div class="project-metrics">
-                        <span class="metric">90+ weekly users</span>
-                        <span class="metric">80% paperwork reduction</span>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Automation</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Community & Leadership Section -->
-    <section id="community" class="section">
-        <div class="container">
-            <h2 class="section-title">Community & Leadership</h2>
-            <div class="community-grid">
-                <div class="community-card">
-                    <h3>Co Organizer</h3>
-                    <p class="organization">Microsoft AI Innovators Hub & Global AI Hyderabad</p>
-                    <p class="community-description">Organized 10+ learning sessions engaging 200+ participants per event</p>
-                </div>
-                <div class="community-card">
-                    <h3>Coordinator</h3>
-                    <p class="organization">Cyber Club, SICET</p>
-                    <p class="community-description">Organized 3+ large-scale events impacting 500+ students</p>
-                </div>
-                <div class="community-card">
-                    <h3>Organizer</h3>
-                    <p class="organization">CodeMania 2K25 Hackathon</p>
-                    <p class="community-description">Managed hackathon with 150+ participants across 35+ teams</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in discussing new opportunities, projects, or just connecting with fellow developers.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <strong>Email:</strong>
-                            <a href="mailto:manikantagandhim@outlook.com">manikantagandhim@outlook.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <strong>Phone:</strong>
-                            <a href="tel:+918328448464">+91 8328448464</a>
-                        </div>
-                        <div class="contact-item">
-                            <strong>Location:</strong>
-                            <span>Hyderabad, India</span>
-                        </div>
-                        <div class="contact-item">
-                            <strong>LinkedIn:</strong>
-                            <a href="https://linkedin.com/in/Medishetty-manikanta-gandhi" target="_blank">Medishetty-manikanta-gandhi</a>
-                        </div>
-                        <div class="contact-item">
-                            <strong>GitHub:</strong>
-                            <a href="https://github.com/MKGandhi05" target="_blank">MKGandhi05</a>
-                        </div>
-                    </div>
-                    <button class="btn btn--primary download-resume">Download Resume</button>
-                </div>
-                <div class="contact-form-container">
-                    <form class="contact-form" action="https://formspree.io/f/xpwzbgak" method="POST">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required placeholder="Your message here..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scroll to Top Button -->
-    <button id="scroll-to-top" class="scroll-to-top hidden" aria-label="Scroll to top">
-        <span>↑</span>
-    </button>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Medishetty Manikanta Gandhi. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Scripts: theme toggle + year + prefer color scheme -->
+    <script>
+        const html = document.documentElement;
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const toggle = document.getElementById('themeToggle');
+        toggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+    </script>
 </body>
-    <script src="app.js"></script>
+<!-- Scroll-to-top button -->
+<button id="scrollTopBtn" title="Back to top"
+    class="fixed bottom-6 right-6 z-50 bg-primary-600 text-white p-3 rounded-full shadow-lg hover:bg-primary-700 hover:scale-110 transition-all fade-out"
+    style="display:none;">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+    </svg>
+</button>
+<script>
+    // Scroll-to-top button logic
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollBtn.style.display = 'block';
+            scrollBtn.classList.remove('fade-out');
+            scrollBtn.classList.add('fade-in');
+        } else {
+            scrollBtn.classList.remove('fade-in');
+            scrollBtn.classList.add('fade-out');
+            setTimeout(() => { scrollBtn.style.display = 'none'; }, 300);
+        }
+    });
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    // Navbar active link highlight
+    const navLinks = document.querySelectorAll('.nav-link');
+    function setActiveLink() {
+        let fromTop = window.scrollY + 80;
+        navLinks.forEach(link => {
+            const section = document.querySelector(link.getAttribute('href'));
+            if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+                link.classList.add('text-primary-700', 'dark:text-primary-300', 'font-bold', 'underline');
+            } else {
+                link.classList.remove('text-primary-700', 'dark:text-primary-300', 'font-bold', 'underline');
+            }
+        });
+    }
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('DOMContentLoaded', setActiveLink);
+</script>
+
 </html>
